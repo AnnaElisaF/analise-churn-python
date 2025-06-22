@@ -1,0 +1,19 @@
+# Arquivos de ambiente virtual do Python
+.venv/
+venv/
+ENV/
+
+# Arquivos de cache e compilados do Python
+__pycache__/
+*.pyc
+
+# Arquivos de configuração de IDEs
+.vscode/
+.idea/
+
+data/
+*.csv
+
+# Arquivos compactados que não precisam ser versionados
+*.zip
+/kaggle.json
