@@ -57,7 +57,12 @@ O modelo campeão foi a **Regressão Logística**, que, apesar de mais simples, 
     git clone https://github.com/AnnaElisaF/analise-churn-python.git
     cd analise-churn-python
     ```
-2.  **Crie e ative um ambiente virtual:**
+2.  **Configure o Ambiente:**
+    Crie um arquivo chamado `.env` na raiz do projeto, seguindo o exemplo do `.env.example`. Adicione a seguinte linha, substituindo o caminho pelo local onde você clonou o projeto no seu computador:
+    ```
+    PROJECT_PATH=C:\caminho\para\o\seu\projeto\analise-churn-python
+    ```
+3.  **Crie e ative um ambiente virtual:**
     ```bash
     python -m venv .venv
     # No Windows:
@@ -65,11 +70,11 @@ O modelo campeão foi a **Regressão Logística**, que, apesar de mais simples, 
     # No macOS/Linux:
     source .venv/bin/activate
     ```
-3.  **Instale as dependências:**
+4.  **Instale as dependências:**
     ```bash
     pip install -r requirements.txt
     ```
-4.  **Execute o dashboard:**
+5.  **Execute o dashboard:**
     ```bash
     streamlit run app.py
     ```
