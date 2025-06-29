@@ -24,6 +24,28 @@ O projeto está organizado da seguinte forma:
 
 ---
 
+---
+
+### 📥 Obtenção dos Dados
+
+O dataset original utilizado neste projeto é o "Telco Customer Churn" e pode ser encontrado no Kaggle.
+
+Para que o notebook de análise (`01-exploracao_inicial.ipynb`) funcione, o arquivo `WA_Fn-UseC_-Telco-Customer-Churn.csv` deve estar presente dentro da pasta `data/`.
+
+Existem duas maneiras de obter os dados:
+
+**Opção 1: Download Manual (Simples)**
+1. Acesse o link do dataset no Kaggle: [Telco Customer Churn](https://www.kaggle.com/datasets/blastchar/telco-customer-churn)
+2. Clique no botão "Download".
+3. Descompacte o arquivo `.zip` baixado e mova o arquivo `WA_Fn-UseC_-Telco-Customer-Churn.csv` para a pasta `data/` do projeto.
+
+**Opção 2: Download via API do Kaggle (Recomendado para reprodutibilidade)**
+1. Caso ainda não tenha, instale a biblioteca do Kaggle: `pip install kaggle`.
+2. Baixe seu token de API (`kaggle.json`) da seção 'Account' no seu perfil do Kaggle e coloque-o na pasta `C:\Users\<Seu-Usuario>\.kaggle\` (Windows) ou `~/.kaggle/` (macOS/Linux).
+3. Execute o seguinte comando no terminal, a partir da pasta raiz do projeto:
+   ```bash
+   kaggle datasets download -d blastchar/telco-customer-churn -p data/ --unzip
+
 ### 💡 Principais Descobertas (Insights da Análise)
 
 A análise exploratória revelou um perfil claro para o cliente com alto risco de churn:
