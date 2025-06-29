@@ -17,3 +17,6 @@ data/
 # Arquivos compactados que não precisam ser versionados
 *.zip
 /kaggle.json
+
+# Ignorar arquivos de ambiente local
+.env

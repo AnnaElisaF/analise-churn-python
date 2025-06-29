@@ -1,6 +1,9 @@
 import streamlit as st
 import pandas as pd
 import pickle
+import os
+from dotenv import load_dotenv
+
 
 # Configuração da página
 st.set_page_config(
@@ -9,25 +12,34 @@ st.set_page_config(
     layout='wide'
 )
 
-# Carregando artefatos salvos
-# IMPORTANTE: Este é o caminho completo para a sua pasta de projeto
-caminho_base = r'D:\Projeto_Churn' 
+# Carrega as variáveis do arquivo .env para o ambiente
+load_dotenv()
 
-try:
-    # Usamos f-strings para construir o caminho absoluto para cada arquivo
-    # A barra '/' funciona em todos os sistemas (Windows, Mac, Linux) e é uma boa prática
-    with open(f'{caminho_base}/modelo_campeao.pkl', 'rb') as f:
-        modelo = pickle.load(f)
-    with open(f'{caminho_base}/scaler.pkl', 'rb') as f:
-        scaler = pickle.load(f)
+# Pega o caminho do projeto do ambiente
+PROJECT_PATH = os.getenv('PROJECT_PATH')
 
-    features_df = pd.read_csv(f'{caminho_base}/features.csv')
-    feature_names = features_df.columns.tolist()
-
-except FileNotFoundError:
-    st.error(f"Erro: Arquivo não encontrado! O Streamlit tentou procurar os arquivos na pasta '{caminho_base}'. Por favor, verifique se este caminho está correto e se os arquivos existem lá.")
+# Se o caminho não for encontrado no .env, exibe um erro claro
+if not PROJECT_PATH:
+    st.error("A variável de ambiente PROJECT_PATH não foi definida. Por favor, crie um arquivo .env na raiz do projeto e defina a variável.")
     st.stop()
 
+# Constrói os caminhos para os artefatos de forma segura
+model_path = os.path.join(PROJECT_PATH, 'artifacts', 'modelo_campeao.pkl')
+scaler_path = os.path.join(PROJECT_PATH, 'artifacts', 'scaler.pkl')
+features_path = os.path.join(PROJECT_PATH, 'artifacts', 'features.csv')
+
+try:
+    with open(model_path, 'rb') as f:
+        modelo = pickle.load(f)
+    with open(scaler_path, 'rb') as f:
+        scaler = pickle.load(f)
+    
+    features_df = pd.read_csv(features_path)
+    feature_names = features_df.columns.tolist()
+
+except FileNotFoundError as e:
+    st.error(f"Erro ao carregar arquivos: {e}. Verifique se os caminhos no arquivo .env estão corretos e se os artefatos existem na pasta 'artifacts'.")
+    st.stop()
 
 # Layout do app com abas
 st.title('Análise de Churn de clientes da Telecom')
