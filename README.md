@@ -24,7 +24,7 @@ O projeto está organizado da seguinte forma:
 
 ---
 
----
+
 
 ### 📥 Obtenção dos Dados
 
@@ -45,6 +45,7 @@ Existem duas maneiras de obter os dados:
 3. Execute o seguinte comando no terminal, a partir da pasta raiz do projeto:
    ```bash
    kaggle datasets download -d blastchar/telco-customer-churn -p data/ --unzip
+---
 
 ### 💡 Principais Descobertas (Insights da Análise)
 
